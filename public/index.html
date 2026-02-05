@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satriabox</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="home-view" class="active">
+        <header class="main-header">
+            <div class="header-content">
+                <h1 class="logo" onclick="loadHome()">
+                    SATRIA<span class="logo-accent">BOX</span>
+                    <span class="logo-badge">HD</span>
+                </h1>
+                
+                <div class="header-controls">
+                    <div class="search-container">
+                        <div class="search-wrapper">
+                            <input type="text" id="search-input" placeholder="Cari drama..." class="search-field">
+                            <button id="search-btn" class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="home-btn" onclick="loadHome()">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="content-header">
+                <h2 id="page-title">Trending</h2>
+                <div class="pagination-controls">
+                    <button id="prev-btn" class="page-control" onclick="prevPage()" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span id="page-indicator" class="page-indicator">Page 1</span>
+                    <button id="next-btn" class="page-control" onclick="nextPage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading-container">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-center"></div>
+                </div>
+                <p class="loading-text">Loading dramas...</p>
+            </div>
+
+            <div id="drama-list" class="drama-grid"></div>
+
+            <div class="main-pagination">
+                <div class="pagination-numbers" id="pagination-numbers"></div>
+                <div class="pagination-nav">
+                    <button id="prev-main" class="pagination-btn" onclick="prevPage()" disabled>
+                        <i class="fas fa-arrow-left"></i> Prev
+                    </button>
+                    <button id="next-main" class="pagination-btn" onclick="nextPage()">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Satriabox</h3>
+                    <p>Streaming drama terbaik tanpa batas</p>
+                </div>
+                <div class="footer-section">
+                    <p>Satriadevs</p>
+                    <p class="credit"></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="player-view">
+        <div class="player-overlay" onclick="closePlayer()"></div>
+        <div class="player-container">
+            <div class="player-header">
+                <button class="close-player" onclick="closePlayer()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h3 id="current-title">Loading...</h3>
+            </div>
+            
+            <div class="video-container">
+                <video id="main-video" controls playsinline autoplay>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <div class="player-footer">
+                <div class="episode-controls">
+                    <button class="ep-toggle" onclick="toggleEpisodes()">
+                        <i class="fas fa-list"></i>
+                        <span>Episodes</span>
+                        <i class="fas fa-chevron-down" id="ep-icon"></i>
+                    </button>
+                </div>
+                
+                <div class="episodes-container" id="episodes-container">
+                    <div class="episodes-header">
+                        <h4>Episode List</h4>
+                    </div>
+                    <div class="episodes-grid" id="ep-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
